@@ -1,0 +1,1081 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GT10 University</title>
+    <link rel="icon" type="jpg" href="https://i.pinimg.com/originals/66/6d/00/666d0039b684c6b2dc78a975dd9a67c5.jpg" />
+    <style>
+
+
+      .container {
+        position: relative;
+      }
+
+
+      .container .page-title, .container .page-sub-title {
+        color: #041531 ;
+        text-align: center;
+      }
+
+
+      .container .page-title {
+        margin: 30px 0 5px;
+        font-size: 30px;
+      }
+
+
+      .container .page-sub-title {
+        font-weight: 250;
+        margin: 0 0 30px 0;
+        font-size: 23px;
+      }
+
+      
+      html {
+      background: linear-gradient(45deg, #d2d2d2 10%, #ffffff 90%);
+      font-family: prompt, sans-serif;
+      height: 100vh;
+      }
+
+
+      img {
+        display: block;
+        width: 100%;
+      }
+
+      .card-container {
+      perspective: 1000;
+      margin: 0 auto 50px;
+      max-width: 800px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      }
+
+
+      .front, .back {
+        backface-visibility: hidden;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        padding: 30px;
+        box-sizing: border-box;
+        transition-delay: 0.15s;
+        transition: 0.5s;
+      }
+
+      .front {
+        transform: rotateY(0deg);
+      }
+
+      
+      .back {
+        transform: rotateY(180deg);
+        opacity: 0;
+        padding-top: 60px;
+        backface-visibility: visible;
+        background: #000;
+        color: white;
+      }
+
+      .card {
+        position: relative;
+        width: 400px;
+        height: 450px;
+        background: #0b2248;
+        border-radius: 5px;
+        box-shadow: 0 40px 110px rgba(0, 0, 0, 0.45);
+        overflow: hidden;
+        transform-style: preserve-3d;
+        margin: 10px;
+        margin-top: 44px;
+      }
+
+      .flipped .front {
+        opacity: 0;
+        transform: rotateY(180deg);
+      }
+
+      .flipped .back {
+        opacity: 1;
+        transform: rotateY(0deg);
+      }
+
+      .sub-title {
+        color: #e5dc8e;
+        animation: slide-in 0.75s;
+        animation: slide-in 0.75s cubic-bezier(0.625, 0.075, 0.11, 1.165);
+        animation-timing-function: cubic-bezier(0.625, 0.075, 0.11, 1.165);
+        font-size: 19px;
+        font-weight: 250;
+        margin: 0 0 5px 0;
+      }
+
+      .title {
+        color: #c1a86d;
+        animation: slide-in-slow 0.75s;
+        animation: slide-in-slow 0.75s cubic-bezier(0.625, 0.075, 0.11, 1.165);
+        animation-timing-function: cubic-bezier(0.625, 0.075, 0.11, 1.165);
+        font-size: 31px;
+        font-weight: 450;
+        margin: 0;
+      }
+
+      .synopsis {
+        color: #e5dc8e;
+        font-size: 27px;
+        font-weight: 450;
+        margin: 0 0 15px;
+      }
+
+
+      p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 20px;
+        line-height: 1.5;
+        margin: 0 0 35px;
+      }
+
+
+      h4 {
+      font-weight: 350;
+      text-align: center;
+      font-size: 20px;
+      margin-top: 300px;
+      height: 85vh;
+      }
+
+      h5 {
+        font-weight: 50;
+        font-size: 16px;
+        text-align: right;
+      }
+
+      h6 {
+        text-align: center;
+        font-size: 15px;
+        margin-top: 30px;
+        font-weight: 350;
+      }
+
+      .qr {
+        width: 385px;
+        height: 310px;
+        display: block;
+        margin: 0 auto;
+        margin-top: -490px;
+        box-shadow: 0 40px 110px rgba(0, 0, 0, 0.45);
+      }
+      
+
+      .btn {
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+        background: transparent;
+        display: inline-block;
+        font-size: 17px;
+        padding: 8px 20px 9px 15px;
+        color: #ffffff;
+        transition: 0.5s;
+        margin: 0 2px 0;
+        font-weight: 100;
+      }
+
+      .btn.secondary {
+        border-color: #DE6262;
+        color: #DE6262;
+      }
+
+      .btn.secondary:hover {
+        background: #DE6262;
+      }
+
+      .btn:hover {
+        cursor: pointer;
+        background: #FFB88C;
+        color: white;
+      }
+
+      .btn i {
+        margin: 0 5px 0;
+      }
+
+      .image {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        animation: slide-in-right 0.7s;
+        animation: slide-in-right 0.7s cubic-bezier(0.625, 0.075, 0.11, 1.165);
+        animation-timing-function: cubic-bezier(0.625, 0.075, 0.11, 1.165);
+        font-size: 35px;
+        font-weight: 600;
+        margin: 0;
+      }
+
+      @keyframes slide-in {
+        0% {
+          transform: translate3d(-300px, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @keyframes slide-in-slow {
+        0% {
+          transform: translate3d(-300px, 0, 0);
+        }
+        20% {
+          transform: translate3d(-300px, 0, 0);
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      @keyframes slide-in-right {
+        0% {
+          transform: translate3d(400px, 0, 0);
+        }
+        30% {
+          transform: translate3d(400px, 0, 0);
+          opacity: 0;
+        }
+        40% {
+          opacity: 0;
+        }
+        100% {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-title">
+        GT10
+      </h1>
+      <h2 class="page-sub-title">GT10 University</h2>
+    
+    <div class="card-container">
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">เจษฎา	ใบลาด</h2>
+          <h1 class="title">
+            เขต
+          </h1>
+          <img class="image" src="images/1.PNG" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายเจษฎา	ใบลาด	<br>(เขต)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิศวกรรมศาสตร์	<br>สาขา : วิศวกรรมเครื่องกล
+          </p> 
+          <h5><i>(เขต)
+            <br>Pros : อยากขาว
+            <br>Cons : ทักแชท </i>
+            </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ชุตษณะ ทองนิล</h2>
+          <h1 class="title">
+            เจมส์
+          </h1>
+          <img class="image" src="images/2.PNG" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายชุตษณะ ทองนิล <br>(เจมส์)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิทยาศาสตร์	<br>สาขา : เคมี
+            </p>
+            <h5><i>(เจมส์)
+              <br>Pros : รู้ทุกอย่าง
+              <br>Cons : พรุ่งนี้ใส่ชุดไร </i>
+              </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ทักษพร ทรงพระ</h2>
+          <h1 class="title">
+            นาย
+          </h1>
+          <img class="image" src="images/3.PNG" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายทักษพร ทรงพระ <br>(นาย)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยเทคโนโลยีสุรนารี <br>คณะ : วิศวกรรมศาสตร์ <br>สาขา : วิศวกรรมศาสตร์
+            </p>
+            <h5><i>(นาย)
+              <br>Pros : ร้อยคนทัก
+              <br>Cons : รักคนเก่า </i>
+            </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ศุภเศรษฐ์	อ่อนสีชัย</h2>
+          <h1 class="title">
+            ไดมอนด์
+          </h1>
+          <img class="image" src="images/4.PNG" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายศุภเศรษฐ์	อ่อนสีชัย (ไดมอนด์)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิศวกรรมศาสตร์	<br>สาขา : วิศวกรรมเคมี
+          </p>
+          <h5><i>(ไดมอนด์)
+            <br>Pros : ไม่ใช้กำลังกับผู้หญิง
+            <br>Cons : ต่อยตอง </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">บุญญฤทธิ์	บุรีรักษา</h2>
+          <h1 class="title">
+            ท็อป
+          </h1>
+          <img class="image" src="images/5.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายบุญญฤทธิ์	บุรีรักษา	(ท็อป)</h3>
+          <p>TCAS : รอบ 3 Admission
+            <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : เทคนิคการแพทย์	<br>สาขา : เทคนิคการแพทย์
+          </p>
+            <h5><i>(ท็อป)
+            <br>Pros : เรียนดี กีฬาเด่น
+            <br>Cons : ฟังหมอลำจนซอดแจ้ง </i>
+            </h5>
+        </div>
+      </div>
+      
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">พงศกร วิบุญกุล</h2>
+          <h1 class="title">
+            ฟลุ๊ค
+          </h1>
+          <img class="image" src="images/6.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายพงศกร วิบุญกุล <br>(ฟลุ๊ค)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยราชภัฏอุดรธานี <br>คณะ : ครุศาสตร์	<br>สาขา : วิทยาศาสตร์ทั่วไปและเคมี
+          </p>
+          <h5><i>(ฟลุ๊ค)
+            <br>Pros : เป็นทุกอย่างให้เธอแล้ว 
+            <br>Cons : มีพุงเป็นจุดเช็คอิน </i>
+          </h5>
+        </div>
+      </div>
+
+
+      
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">พิสิษฐ์ คำมะวัน</h2>
+          <h1 class="title">
+            แทน
+          </h1>
+          <img class="image" src="images/7.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายพิสิษฐ์	คำมะวัน	<br>(แทน)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิศวกรรมศาสตร์	<br>สาขา : วิศวกรรมเคมี
+          </p>
+          <h5><i>(แทน)
+            <br>Pros : มือตบวอลเลย์บอล
+            <br>Cons : เพื่อนล้อว่าเหมือนกุ้งสุก </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">พีรภัทร์ ประโพธิ์ทัง</h2>
+          <h1 class="title">
+            ทัช
+          </h1>
+          <img class="image" src="images/8.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายพีรภัทร์ ประโพธิ์ทัง <br>(ทัช)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิทยาลัยการคอมพิวเตอร์	<br>สาขา : ความมั่นคงปลอดภัยไซเบอร์
+          </p>
+          <h5><i>(ทัช)
+            <br>Pros : พูดมาก
+            <br>Cons : เงียบตลอดเวลา </i>
+          </h5>
+        </div>
+      </div>
+
+
+      
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">เมตรไตรย พานสมบูรณ์</h2>
+          <h1 class="title">
+            ราม
+          </h1>
+          <img class="image" src="images/9.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายเมตรไตรย พานสมบูรณ์	(ราม)</h3>
+          <p>TCAS : รอบ 3 Admission
+            <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : นิติศาสตร์
+          </p>
+          <h5><i>(ราม)
+            <br>Pros : นายร้อย
+            <br>Cons : ติดแฟน </i>
+          </h5>
+        </div>
+      </div>
+
+
+      
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">วชิระ	แก้วเมือง</h2>
+          <h1 class="title">
+            ปอนด์
+          </h1>
+          <img class="image" src="images/10.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นายวชิระ แก้วเมือง	<br>(ปอนด์)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยเทคโนโลยีสุรนารี <br>คณะ : วิศวกรรมศาสตร์	<br>สาขา : วิศวกรรมศาสตร์
+          </p>
+          <h5><i>(ปอนด์)
+            <br>Pros : ชอบเด็ก
+            <br>Cons : เด็กทุกคน </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">เปรมยุดา อุ่นจารย์</h2>
+          <h1 class="title">
+            อ๋อมแอ๋ม
+          </h1>
+          <img class="image" src="images/11.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวเปรมยุดา	อุ่นจารย์ (อ๋อมแอ๋ม)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br> <br>วิทยาลัยบัณเอเซีย <br>คณะ : พยาบาลศาสตร์	<br>สาขา : พยาบาลศาสตร์
+          </p>
+          <h5><i>(อ๋อมแอ๋ม)
+            <br>Pros : ชอบเข้าเรียน
+            <br>Cons : บางคาบ </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">กนกวรรณ	เมืองศรี</h2>
+          <h1 class="title">
+            หมอก
+          </h1>
+          <img class="image" src="images/12.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวกนกวรรณ เมืองศรี	(หมอก)</h3>
+          <p>TCAS : รอบ 2 Quota ความร่วมมือทางการศึกษากับกรมส่งเสริมสหกรณ์
+            <br> <br>จุฬาลงกรณ์มหาวิทยาลัย <br>คณะ : สัตวแพทยศาสตร์	<br>สาขา : สัตวแพทยศาสตร์
+          </p>
+          <h5><i>(หมอก)
+            <br>Pros : เฟรนลี่มาก 
+            <br>Cons : แวะทักทุกคนจนเพื่อนหิวข้าว </i>
+          </h5>
+        </div>
+      </div>
+
+
+      
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">จิราภา สนทอง</h2>
+          <h1 class="title">
+            บิว
+          </h1>
+          <img class="image" src="images/13.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวจิราภา สนทอง <br>(บิว)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยราชภัฏอุดรธานี <br>คณะ : ครุศาสตร์	<br>สาขา : วิชาภาษาไทย
+          </p>
+          <h5><i>(บิว)
+            <br>Pros : เฟรนลี่มาก 
+            <br>Cons : แวะทักทุกคน เพื่อนหิวข้าว </i>
+          </h5>
+        </div>
+      </div>
+      
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ฐิตาภา สิริสุขสุวรรณ</h2>
+          <h1 class="title">
+            ฟ้าใหม่
+          </h1>
+          <img class="image" src="images/14.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวฐิตาภา สิริสุขสุวรรณ	(ฟ้าใหม่)</h3>
+          <br> <p>มหาวิทยาลัยรังสิต
+            <br>คณะ : วิทยาลัยศิลปศาสตร์	<br>สาขา : ภาษาอังกฤษ
+          </p>
+          <h5><i>(ฟ้าใหม่)
+            <br>Pros : เต้นเก่ง 
+            <br>Cons : ขี้เกียจแกะท่า </i>
+          </h5>
+        </div>
+      </div>
+      
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ณัฎฐณิชา ราชาเดช</h2>
+          <h1 class="title">
+            ปริม
+          </h1>
+          <img class="image" src="images/15.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวณัฎฐณิชา ราชาเดช	(ปริม)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควต้าภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : สาธารณสุขศาสตร์	<br>สาขา : อนามัยสิ่งแวดล้อม
+          </p>
+          <h5><i>(ปริม)
+            <br>Pros : พูดเพราะที่สุดในห้อง
+            <br>Cons : มีเพื่อนยุให้พูดคำหยาบตลอด </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">นางสาวพรนัชชา นะที</h2>
+          <h1 class="title">
+            แจน
+          </h1>
+          <img class="image" src="images/16.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวพรนัชชา นะที	<br>(แจน)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>วิทยาลัยบัณฑิตเอเซีย <br>คณะ : ศึกษาศาสตร์และศิลปศาสตร์	<br>สาขา : วิชาการศึกษาปฐมวัย <br>และการประถมศึกษา
+          </p>
+          <h5><i>(แจน)
+            <br>Pros : ไม่ค่อยด่าใคร
+            <br>Cons : ด่าตอง </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">วรกาญจน์ โห้แพ</h2>
+          <h1 class="title">
+            แอมมี่
+          </h1>
+          <img class="image" src="images/17.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาววรกาญจน์ โห้แพ	<br>(แอมมี่)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br> <br>มหาวิทยาลัยมหาสารคาม <br>คณะ : นิติศาสตร์
+          </p>
+          <h5><i>(แอมมี่)
+            <br>Pros : ถามคาบแรกเรียนอะไร
+            <br>Cons : มาบ่าย </i>
+          </h5>
+        </div>
+      </div>
+
+
+      
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">สุภาวิณี รักษาภักดี</h2>
+          <h1 class="title">
+            แคท
+          </h1>
+          <img class="image" src="images/18.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวสุภาวิณี รักษาภักดี (แคท)</h3>
+          <p>TCAS : รอบ 3 Admission
+            <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิทยาศาสตร์	<br>สาขา : คณิตศาสตร์
+          </p>
+          <h5><i>(แคท)
+            <br>Pros : ตั้งใจเรียน
+            <br>Cons : ไม่เข้าซักคาบ และไม่เข้าโรงเรียนด้วย </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">จารุภัทร ภูทะวงศ์</h2>
+          <h1 class="title">
+            จ๋า
+          </h1>
+          <img class="image" src="images/19.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวจารุภัทร	ภูทะวงศ์ <br> (จ๋า)</h3>
+          <p>TCAS : รอบ 3 Admission
+            <br> <br>มหาวิทยาลัยศรีนครินทรวิโรฒ <br>คณะ : คณะวิทยาศาสตร์	<br>สาขา : สาขาวิทยาศาสตร์ทั่วไป
+          </p>
+          <h5><i>(จ๋า)
+            <br>Pros : ตัวเล็ก
+            <br>Cons : โดนนายกับปอนด์แกล้งประจำ </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ชฎาภรณ์	ศรีพุทธา</h2>
+          <h1 class="title">
+            มายด์
+          </h1>
+          <img class="image" src="images/20.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวชฎาภรณ์ ศรีพุทธา	(มายด์)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : สถาปัตยกรรมศาสตร์	<br>สาขา : การออกแบบ
+          </p>
+          <h5><i>(มายด์)
+            <br>Pros : ไม่ชอบยุ่งกับใคร
+            <br>Cons : คนชอบยุ่งด้วยเพราะหน้าหาเรื่อง </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ณัฐวิภา	ชินบุตร</h2>
+          <h1 class="title">
+            ขมิ้น
+          </h1>
+          <img class="image" src="images/21.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวณัฐวิภา ชินบุตร (ขมิ้น)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : ศิลปกรรมศาสตร์	<br>สาขา : ทัศนศิลป์
+          </p>
+          <h5><i>(ขมิ้น)
+            <br>Pros : ช่างแต่งหน้าเบอร์หนึ่ง
+            <br>Cons : เพื่อนยืมเครื่องสำอางจนลืมว่าเป็นของตัวเอง </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ณิชารีย์ ใหลสุข</h2>
+          <h1 class="title">
+            ไจ๋ไจ๋
+          </h1>
+          <img class="image" src="images/22.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวณิชารีย์ ใหลสุข	<br>(ไจ๋ไจ๋)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br>เด็กดีมีที่เรียน <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : คณะเเพทย์ศาสตร์	<br>สาขา : เเพทย์เเผนไทยประยุกต์
+          </p>
+          <h5><i>(ไจ๋ไจ๋)
+            <br>Pros : หาเงินเก่ง
+            <br>Cons : ใช้เงินเก่ง </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ประชาธิปไตย	ปู่คาน</h2>
+          <h1 class="title">
+            ตอง
+          </h1>
+          <img class="image" src="images/23.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวประชาธิปไตย	ปู่คาน (ตอง)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : นิติศาสตร์	<br>
+          </p>
+          <h5><i>(ตอง)
+            <br>Pros : จัดการได้ทุกเรื่อง
+            <br>Cons : ยกเว้นความรัก </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ประภัทรวดี คลังกลาง</h2>
+          <h1 class="title">
+            แอน
+          </h1>
+          <img class="image" src="images/24.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวประภัทรวดี คลังกลาง (แอน)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยมหิดล <br>คณะ : กายภาพบำบัด	<br>สาขา : กายภาพบำบัด
+          </p>
+          <h5><i>(แอน)
+            <br>Pros : พกทุกยา เพื่อนเรียกหมอแอน
+            <br>Cons : ป่วยง่าย </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ปิยดา	โดดชัย</h2>
+          <h1 class="title">
+            ปริม
+          </h1>
+          <img class="image" src="images/25.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวปิยดา	โดดชัย	<br> (ปริม)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : สถาปัตยกรรมศาสตร์	<br>สาขา : การออกแบบ
+          </p>
+          <h5><i>(ปริม)
+            <br>Pros : ตั้งใจเรียนมากตอนเรียนออนไลน์
+            <br>Cons : เน็ตไม่ดี </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ยุภาดา	พิมพ์แมน</h2>
+          <h1 class="title">
+            แพร
+          </h1>
+          <img class="image" src="images/26.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวยุภาดา	พิมพ์แมน	(แพร)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : พยาบาลศาสตร์	<br>สาขา : พยาบาลศาสตร์
+          </p>
+          <h5><i>(แพร)
+            <br>Pros : เงียบคือตั้งใจเรียน
+            <br>Cons : เสียงดังคือด่าเพื่อน </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">ลักขณา	แก้วแก่นคูณ</h2>
+          <h1 class="title">
+            เบนซ์
+          </h1>
+          <img class="image" src="images/27.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวลักขณา	แก้วแก่นคูณ	(เบนซ์)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br>ทุนโรงพยาบาลน้ำพอง <br> <br>วิทยาลัยบัณฑิตเอเซีย <br>คณะ : พยาบาลศาสตร์	<br>สาขา : พยาบาลศาสตร์
+          </p>
+          <h5><i>(เบนซ์)
+            <br>Pros : เข้าเรียนทุกคาบ
+            <br>Cons : หลับหมดไม่สนคาบใคร </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">วทันยา	อุดมศักดิ์</h2>
+          <h1 class="title">
+            น้ำ
+          </h1>
+          <img class="image" src="images/28.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาววทันยา	อุดมศักดิ์	(น้ำ)</h3>
+          <p>TCAS : รอบ 3 Admission
+            <br> <br>มหาวิทยาลัยราชภัฏบ้านสมเด็จเจ้าพระยา <br>คณะ : ครุศาสตร์	<br>สาขา : การศึกษาปฐมวัย
+          </p>
+          <h5><i>(น้ำ)
+            <br>Pros : พูดเก่ง
+            <br>Cons : แต่ไม่รู้พูดเรื่องอะไร </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">วนิดา	ขันตรีกรม</h2>
+          <h1 class="title">
+            วิว
+          </h1>
+          <img class="image" src="images/29.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาววนิดา	ขันตรีกรม	<br> (วิว)</h3>
+          <p>TCAS :  รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : ศึกษาศาสตร์	<br>สาขา : สังคมศึกษา
+          </p>
+          <h5><i>(วิว)
+            <br>Pros : ร้องเพลงเพราะ
+            <br>Cons : บ่นเก่ง </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">สุจิตรา	เวฬุวรรณ</h2>
+          <h1 class="title">
+            ปอ
+          </h1>
+          <img class="image" src="images/30.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวสุจิตรา	เวฬุวรรณ	(ปอ)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : เทคนิคการแพทย์	<br>สาขา : เทคนิคการแพทย์
+          </p>
+          <h5><i>(ปอ)
+            <br>Pros : เรียนเก่งมาก
+            <br>Cons : เมื่อกี้อาจารย์พูดว่าไรนะ </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">สุธีรา	ไชยศรี</h2>
+          <h1 class="title">
+            วิว
+          </h1>
+          <img class="image" src="images/31.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวสุธีรา	ไชยศรี	<br> (วิว)</h3>
+          <p>TCAS : รอบ 1 Portfolio
+            <br> <br>มหาวิทยาลัยศรีนครินทรวิโรฒ <br>คณะ : กายภาพบำบัด	<br>สาขา : ส่งเสริมสุขภาพ
+          </p>
+          <h5><i>(วิว)
+            <br>Pros : เล่นกีฬาได้
+            <br>Cons : กีฬาสีไม่ลงไรเลย </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">น้ำเพชร	ดวงโนแสน</h2>
+          <h1 class="title">
+            น้ำ
+          </h1>
+          <img class="image" src="images/32.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวน้ำเพชร	ดวงโนแสน	(น้ำ)</h3>
+          <p>TCAS : รอบ 3 Admission
+            <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิศวกรรมศาสตร์	<br>สาขา : วิศวกรรมโลจิสติกส์ <br>หลักสูตรนานาชาติ
+          </p>
+          <h5><i>(น้ำ)
+            <br>Pros : ปากแจ๋ว
+            <br>Cons : เบอร์หนึ่งในการอวดแฟนให้เพื่อนอิจฉา </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">สันต์หทัย	คันธจันทร์</h2>
+          <h1 class="title">
+            บีม
+          </h1>
+          <img class="image" src="images/33.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวสันต์หทัย	คันธจันทร์	(บีม)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : วิทยาศาสตร์	<br>สาขา : ชีวเคมี
+          </p>
+          <h5><i>(บีม)
+            <br>Pros : มาโรงเรียนทุกวัน
+            <br>Cons : นอนทุกวัน </i>
+          </h5>
+        </div>
+      </div>
+
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">พัชราภรณ์	จันทร์เทาว์</h2>
+          <h1 class="title">
+            แพน
+          </h1>
+          <img class="image" src="images/34.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวพัชราภรณ์	จันทร์เทาว์	(แพน)</h3>
+          <p>TCAS : รอบ 2 Quota
+            <br>โควตาภาคตะวันออกเฉียงเหนือ <br> <br>มหาวิทยาลัยขอนเเก่น <br>คณะ : มนุษยศาสตร์	<br>สาขา : สังคมวิทยาและมานุษยวิทยา
+          </p>
+          <h5><i>(แพน)
+            <br>Pros : แม่ของห้อง
+            <br>Cons : ตัดหน้าม้าเต๋อ </i>
+          </h5>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="front" onclick="toggleFlip(this)">
+          <h2 class="sub-title">สิริญารัตน์	สีโท</h2>
+          <h1 class="title">
+            เอิร์ธ
+          </h1>
+          <img class="image" src="images/35.png" alt="" />
+        </div>
+        <div class="back" onclick="toggleFlip(this)">
+          <h3 class="synopsis">นางสาวสิริญารัตน์	สีโท	(เอิร์ธ)</h3>
+          <p>TCAS : รอบ 3 Admission
+            <br> <br>สถาบันการพยาบาลศรีสวรินทิรา สภากาชาดไทย <br>คณะ : พยาบาลศาสตร์	<br>สาขา : พยาบาลศาตร์
+          </p>
+          <h5><i>(เอิร์ธ)
+            <br>Pros : มาเรียนทุกคาบ ทราบทุกงาน
+            <br>Cons : ข้อนี้ตอบไรนะ </i>
+          </h5>
+        </div>
+      </div>
+
+    </div>
+
+
+    <h4>They simply mean I'll miss you. Until we meet again!
+      <br>มันเป็นแค่การบอกว่าฉันจะคิดถึงเธอ จนกว่าเราจะได้พบกันอีก.
+    </h4>
+
+      <img class="qr" src="/images/GT10.jpeg" alt="">
+
+      <h6>(use app "Artivive" scan me)</h6>
+
+    <script>
+
+
+      function toggleFlip(element) {
+    var card = element.parentElement;
+    if (card.classList.contains("flipped")) {
+      card.classList.remove("flipped");
+      resetAnimation(card);
+    } else {
+      card.classList.add("flipped");
+    }
+  }
+
+
+
+  function resetAnimation(card) {
+    var front = card.querySelector(".front");
+    var back = card.querySelector(".back");
+    var image = card.querySelector(".image");
+
+    front.style.animation = "none";
+    back.style.animation = "none";
+    image.style.animation = "none";
+
+
+    setTimeout(function () {
+      front.style.animation = "";
+      back.style.animation = "";
+      image.style.animation = "";
+    }, 10);
+  }
+    </script>
+  </body>
+  </html>
+    
